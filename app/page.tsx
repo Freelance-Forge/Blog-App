@@ -1,10 +1,9 @@
 import { getServerSession } from 'next-auth'
-import Image from 'next/image'
-import { options } from './api/auth/[...nextauth]/options'
+import { config } from '@/auth'
 import UserCard from '@/components/UserCard'
 
 export default async function Home() {
-  const session = await getServerSession(options)
+  const session = await getServerSession(config)
 
   return (
     <>

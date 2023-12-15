@@ -1,12 +1,9 @@
-import { options } from "@/app/api/auth/[...nextauth]/options"
+import { config } from "@/auth"
 import { getServerSession } from "next-auth/next"
-import Image from "next/image"
 import Link from "next/link"
-// import UserCard from "../components/UserCard"
-import { redirect } from "next/navigation"
 
 export default async function Nav() {
-    const session = await getServerSession(options)
+    const session = await getServerSession(config)
 
     return (
         <nav className='flex-between w-full mb-10'>
