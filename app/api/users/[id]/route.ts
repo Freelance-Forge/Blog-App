@@ -1,5 +1,4 @@
 import { PrismaClient } from '@prisma/client'
-import type Cuid from 'cuid';
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { config } from '@/auth';
@@ -24,32 +23,36 @@ export async function PATCH(request: Request, {params}: { params: { id: string }
         return NextResponse.json(
             {
                 error: "Unauthorized"
+            },
+            {
+                status: 401
             }
         )
     }
 
-    // if(session?.user?.id !== userId) {
-    //     return NextResponse.json(
-    //         {
-    //             error: "Unauthorized"
-    //         }
-    //     )
-    // }
+    if(session?.user?.id !== userId) {
+        return NextResponse.json(
+            {
+                error: "Unauthorized"
+            },
+            {
+                status: 401
+            }
+        )
+    }
 
     const body = await request.json();
 
-    const user = await prismaClient.user.update({ 
-        where: { id: params.id }, 
-        data: { 
-                name: body.name, 
-                image: body.image, 
-                age: body.age, 
-            } 
+    const user = await prismaClient.user.update({
+        where: { id: params.id },
+        data: {
+                name: body.name,
+                image: body.image,
+                age: body.age,
+            }
     }).catch();
 
     return NextResponse.json(
-        {
-            user
-        }
+        user
     )
 }
