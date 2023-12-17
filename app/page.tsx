@@ -49,7 +49,6 @@ const newBlog = {
   author: "Jatin",
 };
 
-
 const featuredPosts = [
   {
     title: "Featured post",
@@ -108,14 +107,14 @@ export default function Home() {
               <FeaturedPost key={post.title} post={post} />
             ))}
           </Grid>
-          <Grid container spacing={5} sx={{mt: 3}}>
-          <NewBlog
-            title={newBlog.title}
-            description={newBlog.description}
-            image={newBlog.image}
-            authorImage={newBlog.authorImage}
-            author={newBlog.author}
-    />
+          <Grid container spacing={5} sx={{ mt: 3 }}>
+            <NewBlog
+              title={newBlog.title}
+              description={newBlog.description}
+              image={newBlog.image}
+              authorImage={newBlog.authorImage}
+              author={newBlog.author}
+            />
           </Grid>
           <Grid container spacing={5} sx={{ mt: 3 }}>
             <Main title="From the firehose" posts={posts} />
@@ -126,7 +125,6 @@ export default function Home() {
               social={sidebar.social}
             />
           </Grid>
-          
         </main>
       </Container>
       <Footer
