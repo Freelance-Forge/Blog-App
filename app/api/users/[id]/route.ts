@@ -22,15 +22,10 @@ export async function PATCH(request: Request, {params}: { params: { id: string }
     if(!session) {
         return NextResponse.json(
             {
-<<<<<<< HEAD
-                error: "Unauthorized",
-                session
-=======
                 error: "Unauthorized"
             },
             {
                 status: 401
->>>>>>> 98dd6c274f76343376f8777749f8050f541af822
             }
         )
     }
