@@ -4,7 +4,6 @@ import UserCard from '@/components/UserCard'
 
 export default async function Home() {
   const session = await getServerSession(config)
-
   return (
     <>
       {session ? (
