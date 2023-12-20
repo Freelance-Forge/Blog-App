@@ -56,3 +56,39 @@ export async function PATCH(request: Request, {params}: { params: { id: string }
         user
     )
 }
+
+// Delete User Route
+export async function DELETE(request: Request, {params}: { params: { id: string } }) {
+    const session = await getServerSession(config);
+    const userId = params.id
+
+    if(!session) {
+        return NextResponse.json(
+            {
+                error: "Unauthorized"
+            },
+            {
+                status: 401
+            }
+        )
+    }
+
+    if(session?.user?.id !== userId) {
+        return NextResponse.json(
+            {
+                error: "Unauthorized"
+            },
+            {
+                status: 401
+            }
+        )
+    }
+
+    const user = await prismaClient.user.delete({
+        where: { id: params.id },
+    })
+
+    return NextResponse.json(
+        user
+    )
+}
