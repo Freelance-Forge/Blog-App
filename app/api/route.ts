@@ -6,11 +6,11 @@ const prismaClient = new PrismaClient()
 
 export const GET = async () => {
     const session = await getServerSession();
-    console.log(session);
 
     return NextResponse.json(
         {
             msg: "hello",
+            session
         }
     );
 }

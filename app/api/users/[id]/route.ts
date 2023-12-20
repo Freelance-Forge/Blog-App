@@ -23,7 +23,8 @@ export async function PATCH(request: Request, {params}: { params: { id: string }
     if(!session) {
         return NextResponse.json(
             {
-                error: "Unauthorized"
+                error: "Unauthorized",
+                session
             }
         )
     }
