@@ -15,6 +15,7 @@ export default async function Nav() {
                 <li className="mr-10"><Link href="/">Home</Link></li>
                 {session?.user ? (
                     <ul className="flex ">
+                        <li className="mr-10"><Link href="/write">Write</Link></li>
                         <li className="mr-10"><Link href="/profile">Profile</Link></li>
                         <li className="mr-10"><Link href="/api/auth/signout">Sign Out</Link></li>
                     </ul>
